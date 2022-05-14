@@ -32,6 +32,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <RadioButton Grid.Column="0"
@@ -46,6 +47,10 @@
                          Command="{Binding UpdateCurrentViewModelCommand}"
                          CommandParameter="{x:Static nav:ViewType.Shop}"
                          Content="Shops/storages" />
+            <RadioButton Grid.Column="3"
+                         Command="{Binding UpdateCurrentViewModelCommand}"
+                         CommandParameter="{x:Static nav:ViewType.Product}"
+                         Content="Products" />
         </Grid>
     </Grid>
 </UserControl>

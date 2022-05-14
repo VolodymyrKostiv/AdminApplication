@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace AdminApplication.ViewModels.Factories
 {
-    internal class ProductViewModelFactory
+    internal class ProductViewModelFactory : IViewModelFactory<ProductViewModel>
     {
+        public ProductViewModel CreateViewModel()
+        {
+            return new ProductViewModel();
+        }
     }
 }

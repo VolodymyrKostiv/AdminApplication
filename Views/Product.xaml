@@ -4,32 +4,98 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AdminApplication.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:AdminApplication.ViewModels"
+             d:DataContext="{d:DesignInstance viewmodel:ProductViewModel}"
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">
     <Grid>
         <Grid.Resources>
-            <Style TargetType="TextBlock">
-                <Setter Property="HorizontalAlignment" Value="Left" />
-                <Setter Property="Padding" Value="10,5" />
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="Margin" Value="10,5" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-            </Style>
-            <Style TargetType="TextBox">
-                <Setter Property="HorizontalAlignment" Value="Left" />
-                <Setter Property="Padding" Value="10,5" />
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="Margin" Value="10,5" />
-                <Setter Property="Width" Value="300" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-            </Style>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/Styles/DataGridStyles.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+                <Style TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="Padding" Value="10,5" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="Margin" Value="10,5" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="Padding" Value="10,5" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="Margin" Value="10,5" />
+                    <Setter Property="Width" Value="200" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+            </ResourceDictionary>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1.5*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Column="0"
+                  Width="Auto"
+                  Height="Auto"
+                  Margin="10,5,10,5"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  ColumnWidth="Auto"
+                  HorizontalScrollBarVisibility="Auto"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding Products}"
+                  SelectedItem="{Binding SelectedProduct}"
+                  Style="{StaticResource DataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.8*"
+                                    Binding="{Binding Path=ProductId}"
+                                    Header="ID">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Width="3*"
+                                    Binding="{Binding Path=Title}"
+                                    Header="Product Name" />
+
+                <DataGridTextColumn Width="3*"
+                                    Binding="{Binding Path=Description}"
+                                    Header="Description" />
+
+                <DataGridTextColumn Width="2.5*"
+                                    Binding="{Binding Path=Brand}"
+                                    Header="Brand" />
+
+                <DataGridTextColumn Width="2.5*"
+                                    Binding="{Binding Path=Category}"
+                                    Header="Category" />
+
+                <DataGridTextColumn Width="2.5*"
+                                    Binding="{Binding Path=Subcategory}"
+                                    Header="Subcategory" />
+
+                <DataGridTextColumn Width="1*"
+                                    Binding="{Binding Path=Price}"
+                                    Header="Price">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Width="1*"
+                                    Binding="{Binding Path=UnitOfMeasurement}"
+                                    Header="Unit" />
+            </DataGrid.Columns>
+        </DataGrid>
+
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -48,72 +114,51 @@
 
             <TextBlock Grid.Row="0"
                        Grid.Column="0"
-                       Text="First Name" />
+                       Text="Title" />
             <TextBox Grid.Row="0"
                      Grid.Column="1"
-                     Text="{Binding _FirstName, Mode=TwoWay}" />
+                     Text="{Binding ProductCreate.Title}" />
 
             <TextBlock Grid.Row="1"
                        Grid.Column="0"
-                       Text="Last Name" />
+                       Text="Description" />
             <TextBox Grid.Row="1"
                      Grid.Column="1"
-                     Text="{Binding _LastName, Mode=TwoWay}" />
+                     Text="{Binding ProductCreate.Description}" />
 
             <TextBlock Grid.Row="2"
                        Grid.Column="0"
-                       Text="Login" />
+                       Text="Brand" />
             <TextBox Grid.Row="2"
                      Grid.Column="1"
-                     Text="{Binding _Login, Mode=TwoWay}" />
+                     Text="{Binding ProductCreate.Brand}" />
 
             <TextBlock Grid.Row="3"
                        Grid.Column="0"
-                       Text="Password" />
+                       Text="Price" />
             <TextBox Grid.Row="3"
                      Grid.Column="1"
-                     Text="{Binding _Password, Mode=TwoWay}" />
+                     Text="{Binding ProductCreate.Price}" />
 
             <TextBlock Grid.Row="4"
                        Grid.Column="0"
-                       Text="Shop ID" />
+                       Text="Unit" />
             <TextBox Grid.Row="4"
                      Grid.Column="1"
-                     Text="{Binding _ShopID, Mode=TwoWay}" />
+                     Text="{Binding ProductCreate.UnitOfMeasurement}" />
 
             <TextBlock Grid.Row="5"
                        Grid.Column="0"
-                       Text="PhoneNumber" />
+                       Text="Subcategory" />
             <TextBox Grid.Row="5"
                      Grid.Column="1"
-                     Text="{Binding _PhoneNumber, Mode=TwoWay}" />
+                     Text="{Binding ProductCreate.Subcategory}" />
 
-            <Grid Grid.Row="6" Grid.ColumnSpan="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <RadioButton Grid.Column="0"
-                             HorizontalAlignment="Center"
-                             HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center"
-                             Content="Seller"
-                             FontSize="20"
-                             IsChecked="{Binding IsSeller}" />
-                <RadioButton Grid.Column="1"
-                             HorizontalAlignment="Center"
-                             HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center"
-                             Content="Manager"
-                             FontSize="20"
-                             IsChecked="{Binding IsManager}" />
-            </Grid>
-
-            <Button Grid.Row="7"
+            <Button Grid.Row="6"
                     Grid.ColumnSpan="2"
                     Width="Auto"
                     Height="Auto"
-                    Command="{Binding AddToReceiptCommand}"
+                    Command="{Binding SubmitProduct}"
                     Content="Submit" />
         </Grid>
     </Grid>

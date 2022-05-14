@@ -13,6 +13,7 @@ namespace AdminApplication.Navigators
         AddEmployee,
         CheckEmployees,
         Shop,
+        Product,
     }
 
     public interface INavigator

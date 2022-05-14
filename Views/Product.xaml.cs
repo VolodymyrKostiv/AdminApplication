@@ -18,9 +18,9 @@ namespace AdminApplication.Views
     /// <summary>
     /// Interaction logic for AddProduct.xaml
     /// </summary>
-    public partial class AddProduct : UserControl
+    public partial class Product : UserControl
     {
-        public AddProduct()
+        public Product()
         {
             InitializeComponent();
         }

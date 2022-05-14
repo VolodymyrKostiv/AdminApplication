@@ -35,6 +35,7 @@ namespace AdminApplication
             services.AddSingleton<IViewModelFactory<AddEmployeeViewModel>, AddEmployeeViewModelFactory>();
             services.AddSingleton<IViewModelFactory<CheckEmployeesViewModel>, CheckEmployeesViewModelFactory>();
             services.AddSingleton<IViewModelFactory<ShopViewModel>, ShopViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<ProductViewModel>, ProductViewModelFactory>();
 
             services.AddScoped<MainViewModel>();
 
