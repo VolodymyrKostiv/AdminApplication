@@ -42,6 +42,10 @@
                          Command="{Binding UpdateCurrentViewModelCommand}"
                          CommandParameter="{x:Static nav:ViewType.CheckEmployees}"
                          Content="Check Employees" />
+            <RadioButton Grid.Column="2"
+                         Command="{Binding UpdateCurrentViewModelCommand}"
+                         CommandParameter="{x:Static nav:ViewType.Shop}"
+                         Content="Shops/storages" />
         </Grid>
     </Grid>
 </UserControl>

@@ -11,6 +11,7 @@ namespace AdminApplication.Commands
     {
         private Action<object> execute;
         private Predicate<object> canExecute;
+        private RelayCommand submitStorage;
 
         public event EventHandler CanExecuteChanged
         {
@@ -24,6 +25,11 @@ namespace AdminApplication.Commands
         {
             this.execute = execute;
             this.canExecute = canExecute;
+        }
+
+        public RelayCommand(RelayCommand submitStorage)
+        {
+            this.submitStorage = submitStorage;
         }
 
         public bool CanExecute(object parameter)

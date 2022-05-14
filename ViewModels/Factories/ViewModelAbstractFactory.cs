@@ -11,13 +11,16 @@ namespace AdminApplication.ViewModels.Factories
     {
         private readonly IViewModelFactory<AddEmployeeViewModel> _addEmployeeViewModelFactory;
         private readonly IViewModelFactory<CheckEmployeesViewModel> _checkEmployeesViewModelFactory;
+        private readonly IViewModelFactory<ShopViewModel> _shopViewModelFactory;
 
         public ViewModelAbstractFactory(
             IViewModelFactory<AddEmployeeViewModel> addEmployeeViewModelFactory,
-            IViewModelFactory<CheckEmployeesViewModel> checkEmployeesViewModelFactory)
+            IViewModelFactory<CheckEmployeesViewModel> checkEmployeesViewModelFactory,
+            IViewModelFactory<ShopViewModel> shopViewModelFactory)
         {
             _addEmployeeViewModelFactory = addEmployeeViewModelFactory;
             _checkEmployeesViewModelFactory = checkEmployeesViewModelFactory;
+            _shopViewModelFactory = shopViewModelFactory;
         }
 
         public ViewModelBase CreateViewModel(ViewType viewType)
@@ -28,6 +31,8 @@ namespace AdminApplication.ViewModels.Factories
                     return _addEmployeeViewModelFactory.CreateViewModel();
                 case ViewType.CheckEmployees:
                     return _checkEmployeesViewModelFactory.CreateViewModel();
+                case ViewType.Shop:
+                    return _shopViewModelFactory.CreateViewModel();
                 default:
                     throw new ArgumentException("Invalid ViewModelType");
             }

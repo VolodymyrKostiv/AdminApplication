@@ -15,6 +15,9 @@
             <DataTemplate DataType="{x:Type viewmodel:CheckEmployeesViewModel}">
                 <view:CheckEmployees />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodel:ShopViewModel}">
+                <view:ShopView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
